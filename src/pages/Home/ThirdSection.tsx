@@ -68,11 +68,7 @@ export default function ThirdSection() {
   // --- Плавное перемещение слайдов ---
   // Рассчитываем ширину одного слайда (в процентах)
   const slideWidthPercent =
-    slidesToShow === 4
-      ? 25
-      : slidesToShow === 2
-      ? 50
-      : 100;
+    slidesToShow === 4 ? 25 : slidesToShow === 2 ? 50 : 100;
 
   // Сдвиг контейнера слайдов
   const translateX = -(current * slideWidthPercent);
@@ -152,6 +148,10 @@ export default function ThirdSection() {
             </button>
           </div>
         </div>
+        <h1 className="w-full mt-5 max-w-full break-words font-bold text-right text-white px-4 text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
+          В ОБЪЕКТИВЕ <br />
+          РАЙОНА
+        </h1>
       </div>
     </div>
   );

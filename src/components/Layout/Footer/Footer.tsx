@@ -1,13 +1,10 @@
-import deonigi from '../../assets/Deonigi.png'
-import ava from '../../assets/Ava.svg'
-import burger from '../../assets/burger.svg'
+import burger from '../../../assets/burger.svg'
+import ava from '../../../assets/Ava.svg'
+import deonigi from '../../../assets/Deonigi.png'
 
-export default function FourthSection() {
+export default function Footer() {
   return (
     <div className='h-auto 2xl:min-h-screen xl:min-h-screen lg:h-auto md:h-auto sm:h-auto'>
-      <h1 className="w-full max-w-full break-words font-bold text-right text-white px-4 text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
-        В ОБЪЕКТИВЕ <br />РАЙОНА
-      </h1>
       <div className='w-full bg-white flex justify-center items-center flex-col py-5 h-auto'>
          <div className='hidden w-full justify-center gap-5 2xl:flex xl:flex md:hidden sm:hidden'>
             <p>Marsy Hub</p>
