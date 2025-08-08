@@ -1,12 +1,13 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/products"; // если порт другой — поменяйте
+const API_URL = "http://127.0.0.1:8000/products"; // если порт другой — поменяйте
 
 export interface Product {
   id: number;
   name: string;
   description: string;
   price: number;
+  category: number;
   images: string[];
   stock: number;
 }

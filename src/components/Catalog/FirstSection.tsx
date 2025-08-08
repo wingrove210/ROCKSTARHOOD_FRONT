@@ -4,7 +4,7 @@ import divider from '../../assets/Devider.svg'
 export default function FirstSection() {
   return (
     <>
-      <div className="bg-white flex justify-center items-center w-full relative mt-10 sm:mt-6">
+      <div className="bg-white flex justify-center items-center py-10 w-full relative mt-10 2xl:py-0 2xl:mt-15 xl:py-0 xl:mt-20 lg:py-0 lg:mt-10 md:py-0 md:mt-10 sm:mt-6 sm:py-10">
         <h1 className="text-black font-bold tracking-widest
           text-[60px] sm:text-[40px] md:text-[100px] lg:text-[180px] xl:text-[250px]
           leading-none select-none"

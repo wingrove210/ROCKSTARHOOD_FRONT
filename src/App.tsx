@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Drop from './pages/Drop/Drop';
 import Catalog from './components/Catalog/Catalog';
+import ProductPage from './components/Catalog/ProductPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/catalog' element={<Catalog/>}/>
         <Route path='/drop' element={<Drop/>}/>
         <Route path='/' element={<Home/>}/>
+        <Route path="/product/:id" element={<ProductPage/>} />
       </Routes>
     </BrowserRouter>
   )

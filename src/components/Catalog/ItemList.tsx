@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Good from './Good'
-import { goods } from './goods'
+import { fetchProducts, type Product } from '../../api/productsApi'
 
 const categories = [
   "ДЖЕРСИ",
@@ -13,6 +14,15 @@ const ITEMS_PER_PAGE = 3;
 
 export default function ItemList() {
   const [page, setPage] = useState<{[key: string]: number}>({});
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts().then(data => {
+      setProducts(data);
+      setLoading(false);
+    });
+  }, []);
 
   const handlePrev = (category: string) => {
     setPage(prev => ({
@@ -28,10 +38,13 @@ export default function ItemList() {
     }));
   };
 
+  if (loading) return <div className="text-white">Загрузка...</div>;
+
   return (
     <div className="w-full">
-      {categories.map(category => {
-        const items = goods.filter(good => good.category === category);
+      {categories.map((category, idx) => {
+        // idx — это и есть integer категория из бэка
+        const items = products.filter(product => product.category === idx);
         const maxPage = Math.max(0, items.length - ITEMS_PER_PAGE);
         const currentPage = page[category] || 0;
 
@@ -66,24 +79,40 @@ export default function ItemList() {
                     transform: `translateX(-${currentPage * (100 / ITEMS_PER_PAGE)}%)`
                   }}
                 >
-                  {items.map((good, idx) => (
+                  {items.map((product) => (
                     <div
-                      key={good.name + idx}
+                      key={product.id}
                       className="w-1/3 min-w-[320px] max-w-[440px] flex-shrink-0"
                     >
-                      <Good {...good} />
+                      <Link to={`/product/${product.id}`}>
+                        <Good
+                          name={product.name}
+                          price={product.price}
+                          image={product.images?.[0] || ""}
+                          soldOut={product.stock === 0}
+                          description={product.description}
+                        />
+                      </Link>
                     </div>
                   ))}
                 </div>
               </div>
               {/* Mobile horizontal scroll */}
               <div className="flex md:hidden gap-6 overflow-x-auto pb-4 scrollbar-hide">
-                {items.map((good, idx) => (
+                {items.map((product) => (
                   <div
-                    key={good.name + idx}
+                    key={product.id}
                     className="min-w-[180px] max-w-[220px] flex-shrink-0"
                   >
-                    <Good {...good} />
+                    <Link to={`/product/${product.id}`}>
+                      <Good
+                        name={product.name}
+                        price={product.price}
+                        image={product.images?.[0] || ""}
+                        soldOut={product.stock === 0}
+                        description={product.description}
+                      />
+                    </Link>
                   </div>
                 ))}
               </div>
