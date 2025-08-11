@@ -3,29 +3,33 @@ import shorts from '../../assets/Catalog/shortsDark.png'
 import ava from '../../assets/Ava.svg'
 export interface Good {
   name: string;
-  price: number;
-  description: string;
+  category: number;
   image: string;
-  category: string;
+  description: string;
+  price: number;
+  discauntprice?: number;
+  sizes?: string[]; 
   soldOut: boolean;
 }
 
 export const goods: Good[] = [
   // Джерси
   {
-    name: "NAME SET DARK",
-    price: 0,
-    description: "",
+    name: "NEM SET DARK",
+    category: 0,
     image: `${tshirt}`,
-    category: "ДЖЕРСИ",
-    soldOut: true,
+    description: "Описание товара...",
+    price: 4500,
+    discauntprice: 7550,
+    sizes: ["XS", "S", "M", "L", "XL"],
+    soldOut: false,
   },
   {
     name: "NAME SET WHITE - DARK",
     price: 0,
     description: "",
     image: `${tshirt}`,
-    category: "ДЖЕРСИ",
+    category: 0,
     soldOut: true,
   },
   {
@@ -33,7 +37,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${tshirt}`,
-    category: "ДЖЕРСИ",
+    category: 0,
     soldOut: true,
   },
   {
@@ -41,7 +45,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${tshirt}`,
-    category: "ДЖЕРСИ",
+    category: 0,
     soldOut: true,
   },
   {
@@ -49,8 +53,18 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${tshirt}`,
-    category: "ДЖЕРСИ",
+    category: 0,
     soldOut: true,
+  },
+  {
+    name: "NEM SET DARK",
+    category: 0,
+    image: "/img/nem-set-dark.png",
+    description: "Описание товара...",
+    price: 4500,
+    discauntprice: 7550,
+    sizes: ["XS", "S", "M", "L", "XL"],
+    soldOut: false,
   },
   // Купальные шорты (муж.)
   {
@@ -58,7 +72,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${shorts}`,
-    category: "КУПАЛЬНЫЕ ШОРТЫ (МУЖ.)",
+    category: 0,
     soldOut: true,
   },
   {
@@ -66,7 +80,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${shorts}`,
-    category: "КУПАЛЬНЫЕ ШОРТЫ (МУЖ.)",
+    category: 0,
     soldOut: true,
   },
   {
@@ -74,7 +88,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${shorts}`,
-    category: "КУПАЛЬНЫЕ ШОРТЫ (МУЖ.)",
+    category: 0,
     soldOut: true,
   },
   {
@@ -82,7 +96,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${shorts}`,
-    category: "КУПАЛЬНЫЕ ШОРТЫ (МУЖ.)",
+    category: 0,
     soldOut: true,
   },
   {
@@ -90,7 +104,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${shorts}`,
-    category: "КУПАЛЬНЫЕ ШОРТЫ (МУЖ.)",
+    category: 0,
     soldOut: true,
   },
   // Купальник (жен.)
@@ -99,7 +113,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КУПАЛЬНИК (ЖЕН.)",
+    category: 0,
     soldOut: true,
   },
   {
@@ -107,7 +121,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КУПАЛЬНИК (ЖЕН.)",
+    category: 0,
     soldOut: true,
   },
   {
@@ -115,7 +129,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КУПАЛЬНИК (ЖЕН.)",
+    category: 0,
     soldOut: true,
   },
   {
@@ -123,7 +137,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КУПАЛЬНИК (ЖЕН.)",
+    category: 0,
     soldOut: true,
   },
   {
@@ -131,7 +145,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КУПАЛЬНИК (ЖЕН.)",
+    category: 0,
     soldOut: true,
   },
   // Кепки унисекс
@@ -140,7 +154,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КЕПКИ УНИСЕКС",
+    category: 0,
     soldOut: true,
   },
   {
@@ -148,7 +162,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КЕПКИ УНИСЕКС",
+    category: 0,
     soldOut: true,
   },
   {
@@ -156,7 +170,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КЕПКИ УНИСЕКС",
+    category: 0,
     soldOut: true,
   },
   {
@@ -164,7 +178,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КЕПКИ УНИСЕКС",
+    category: 0,
     soldOut: true,
   },
   {
@@ -172,7 +186,7 @@ export const goods: Good[] = [
     price: 0,
     description: "",
     image: `${ava}`,
-    category: "КЕПКИ УНИСЕКС",
+    category: 0,
     soldOut: true,
   },
 ];

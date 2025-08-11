@@ -1,3 +1,4 @@
+import tshirt from '../../assets/Catalog/nameSetDark.png'
 interface Good {
     name: string;
     price: number;
@@ -6,10 +7,10 @@ interface Good {
     soldOut: boolean;
 }
 
-export default function Good({name, price, image, soldOut}:Good) {
+export default function Good({name, price, soldOut}:Good) {
   return (
     <div className="flex flex-col items-center mb-6">
-      <img src={image} alt={name} className="w-full object-contain mb-4" />
+      <img src={tshirt} alt={name} className="w-full object-contain mb-4" />
       <div className="w-full text-white">
               <p className="uppercase font-bold text-xs mb-1">{name}</p>
       <p>{price}</p>
