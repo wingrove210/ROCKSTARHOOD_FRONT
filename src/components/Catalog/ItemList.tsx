@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Good from './Good'
 import { goods } from './goods'
+import { addToCart } from "../../utils/cart";
 
 const categories = [
   "ДЖЕРСИ",
@@ -64,6 +65,12 @@ function Drawer({ open, onClose, product }: { open: boolean, onClose: () => void
             <button
               className="w-full bg-black text-white py-4 mt-2 text-lg font-semibold transition hover:bg-gray-900"
               disabled={!selectedSize}
+              onClick={() => {
+                if (product && selectedSize) {
+                  addToCart(product, selectedSize);
+                  // Можно добавить уведомление или открыть корзину
+                }
+              }}
             >
               Добавить в корзину
             </button>
