@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { getCart, removeFromCart, changeCount } from "../../utils/cart";
+import { getCart, removeFromCart, changeCount, clearCart } from "../../utils/cart";
 import { useNavigate } from "react-router-dom";
-import { CartItemDesktop, CartItemMobile } from '../CartItem/CartItem';
+import { CartItemDesktop } from "../CartItem/CartItemDesctop";
+import { CartItemMobile } from "../CartItem/CartItemMobile";
+import cross from "../../assets/cross.svg";
+import bucket from "../../assets/bucket.svg";
 
 export default function CartDrawer({ onClose }: { onClose: () => void }) {
   const navigate = useNavigate();
@@ -33,6 +36,11 @@ export default function CartDrawer({ onClose }: { onClose: () => void }) {
     setCart(getCart());
   };
 
+  const handleClearCart = () => {
+    clearCart();
+    setCart([]);
+  };
+
   // Итоговая сумма
   const filteredCart = cart.filter(
     (item) => item.product && typeof item.product.price === "number"
@@ -52,12 +60,20 @@ export default function CartDrawer({ onClose }: { onClose: () => void }) {
         className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       ></div>
-      <div className="relative ml-auto w-full max-w-xl h-full bg-white z-50 overflow-y-auto flex flex-col">
-        <button className="absolute top-6 right-6 text-3xl" onClick={onClose}>
-          ×
-        </button>
-        <div className="p-10 flex flex-col gap-8">
-          <h2 className="text-4xl font-extrabold uppercase mb-2">Корзина</h2>
+      <div className="relative ml-auto w-full h-full bg-white z-50 overflow-y-auto flex flex-col max-w-xl md:max-w-none md:w-full">
+        <div className="w-full flex justify-between px-4 py-4 mt-2">
+           <h2 className="text-3xl font-extrabold uppercase">Корзина</h2>
+          <div className="flex gap-2">
+            <button onClick={handleClearCart}>
+              <img src={bucket} alt="" />
+            </button>
+            <span className="h-full w-[1px] bg-black"></span>
+            <button className="top-6 right-6 text-3xl" onClick={onClose}>
+              <img src={cross} alt="" />
+            </button>
+          </div>
+        </div>
+        <div className="p-4 flex flex-col gap-8 2xl:p-10 xl:p-8 lg:p-6 md:p-4 sm:p-4">
           {filteredCart.length === 0 ? (
             <div className="text-center text-gray-500">Корзина пуста</div>
           ) : (

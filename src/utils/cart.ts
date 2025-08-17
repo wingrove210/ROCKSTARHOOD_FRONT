@@ -42,3 +42,7 @@ export function changeCount(index: number, delta: number) {
   cart[index].count = Math.max(1, cart[index].count + delta);
   localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+export function clearCart() {
+  localStorage.setItem('cart', '[]');
+}
