@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCart, removeFromCart, changeCount } from "../../utils/cart";
 import { useNavigate } from "react-router-dom";
+import { CartItemDesktop, CartItemMobile } from '../CartItem/CartItem';
 
 export default function CartDrawer({ onClose }: { onClose: () => void }) {
   const navigate = useNavigate();
@@ -61,73 +62,24 @@ export default function CartDrawer({ onClose }: { onClose: () => void }) {
             <div className="text-center text-gray-500">Корзина пуста</div>
           ) : (
             filteredCart.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex gap-4 border-b pb-4 mb-4 items-center"
-              >
-                {/* Выбор (радио) */}
-                <div>
-                  <span
-                    className={`inline-block w-5 h-5 rounded-full border-2 ${
-                      idx === 0 ? "bg-black" : ""
-                    }`}
-                  ></span>
+              <>
+                <div className="hidden md:block">
+                  <CartItemDesktop
+                    item={item}
+                    idx={idx}
+                    onRemove={handleRemove}
+                    onChangeCount={handleChangeCount}
+                  />
                 </div>
-                {/* Картинка */}
-                <img
-                  src={item.product.image}
-                  alt={item.product.name}
-                  className="w-24 h-full object-contain bg-gray-200"
-                />
-                {/* Описание */}
-                <div className="flex-1">
-                  <div className="font-extrabold text-lg uppercase">
-                    {item.product.name}
-                  </div>
-                  <div className="italic font-bold text-base mb-2">Джерси</div>
-                  <div>
-                    <span className="inline-block px-4 py-2 bg-black text-white font-bold text-lg">
-                      {item.size}
-                    </span>
-                  </div>
+                <div className="block md:hidden">
+                  <CartItemMobile
+                    item={item}
+                    idx={idx}
+                    onRemove={handleRemove}
+                    onChangeCount={handleChangeCount}
+                  />
                 </div>
-                {/* Управление количеством и удаление */}
-                <div className="flex flex-col items-end gap-2">
-                  <div className="flex items-center gap-4">
-                    <button
-                      className="text-xl"
-                      onClick={() => handleRemove(idx)}
-                    >
-                      🗑️
-                    </button>
-                    <div className="flex items-center gap-4">
-                      <button
-                        className="bg-gray-200 rounded-full w-8 h-8 text-xl"
-                        onClick={() => handleChangeCount(idx, -1)}
-                      >
-                        -
-                      </button>
-                      <span className="font-bold text-lg">{item.count}</span>
-                      <button
-                        className="bg-gray-200 rounded-full w-8 h-8 text-xl"
-                        onClick={() => handleChangeCount(idx, 1)}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                  <div className="flex gap-2 items-center mt-2">
-                    <span className="font-bold text-xl italic">
-                      {item.product.price.toLocaleString()}₽
-                    </span>
-                    {item.product.discauntprice && (
-                      <span className="line-through text-gray-400">
-                        {item.product.discauntprice.toLocaleString()}₽
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
+              </>
             ))
           )}
           {/* Промокод */}
