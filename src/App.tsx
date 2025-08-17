@@ -6,7 +6,7 @@ import Home from './pages/Home/Home'
 import Drop from './pages/Drop/Drop';
 import Catalog from './components/Catalog/Catalog';
 import ProductPage from './components/Catalog/ProductPage';
-import OrderPage from './components/Order/OrderMain';
+import OrderPage from './pages/Order/OrderMain';
 
 function App() {
   return (

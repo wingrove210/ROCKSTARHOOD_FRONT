@@ -1,4 +1,4 @@
-import CartDrawer from "../../pages/Cart/CartDrawer";
+import CartDrawer from "../Cart/CartDrawer";
 import Footer from "../Layout/Footer/Footer";
 import Header from "../Layout/Header/Header";
 import Category from "./Category";
@@ -13,7 +13,7 @@ export default function Catalog() {
     <>
       <Header
         textColor="white"
-        burgerColor="black"
+        burgerColor="white"
         onCartClick={() => setCartOpen(true)}
       />
       {cartOpen && <CartDrawer onClose={() => setCartOpen(false)} />}

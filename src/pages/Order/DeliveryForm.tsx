@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { saveOrderStep, getOrderStep } from "../../utils/order";
+import { useNavigate } from "react-router-dom";
 
 const countries = ["Россия", "Казахстан", "Беларусь"];
 const cities = {
@@ -8,7 +9,7 @@ const cities = {
   "Беларусь": ["Минск", "Гомель"]
 };
 
-export default function DeliveryForm({ onNext }: { onNext: () => void; onBack: () => void }) {
+export default function DeliveryForm({ onNext}: { onNext: () => void; onBack: () => void }) {
   const prev = getOrderStep(1);
   const [country, setCountry] = useState<keyof typeof cities | "">(prev.country || "");
   const [city, setCity] = useState(prev.city || "");
@@ -17,16 +18,20 @@ export default function DeliveryForm({ onNext }: { onNext: () => void; onBack: (
   const [intercom, setIntercom] = useState(prev.intercom || "");
   const [entrance, setEntrance] = useState(prev.entrance || "");
   const [floor, setFloor] = useState(prev.floor || "");
-
+  const navigate = useNavigate()
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     saveOrderStep(1, { country, city, street, office, intercom, entrance, floor });
     onNext();
   };
 
+  const handleBack = () =>{
+     navigate('/catalog')
+  }
+
   return (
     <form className="max-w-xl mx-auto w-full" onSubmit={handleSubmit}>
-      <h2 className="text-4xl font-extrabold uppercase mb-2">Адрес доставки</h2>
+      <h2 className="text-3xl font-extrabold uppercase mb-2">Адрес доставки</h2>
       <div className="text-xl mb-6 font-semibold">Этап 1/3</div>
       <div className="mb-4">
         <label className="block mb-1">Страна</label>
@@ -68,6 +73,9 @@ export default function DeliveryForm({ onNext }: { onNext: () => void; onBack: (
       </div>
       <button type="submit" className="w-full bg-black text-white py-4 mt-2 text-lg font-semibold transition hover:bg-gray-900">
         Продолжить
+      </button>
+     <button type="button" className="w-full border border-black py-4 mt-2 text-lg font-semibold" onClick={handleBack}>
+        Назад
       </button>
     </form>
   );
